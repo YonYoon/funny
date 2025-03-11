@@ -7,7 +7,7 @@ fn main() {
 
     if mode.trim() == "cipher" {
         let mut message = String::new();
-        println!("Message to encrypt: ");
+        println!("Message to cipher: ");
         std::io::stdin()
             .read_line(&mut message)
             .expect("Problem with your message.");
@@ -33,7 +33,7 @@ fn main() {
         println!("{laugh}");
     } else if mode == "decipher" {
         let mut laugh = String::new();
-        println!("Message to decrypt: ");
+        println!("Message to decipher: ");
         std::io::stdin()
             .read_line(&mut laugh)
             .expect("Problem with your message.");
