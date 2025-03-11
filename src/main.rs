@@ -1,8 +1,3 @@
-// Input words in plain english
-// Transfer them to binary
-// Transfer binary to laughing
-// Output laughing
-
 fn main() {
     let mut mode = String::new();
     println!("Choose your mode");
@@ -17,7 +12,6 @@ fn main() {
             .read_line(&mut message)
             .expect("Problem with your message.");
 
-        // message.pop();
         let bytes = message.trim().to_string().into_bytes();
         let mut binary = String::new();
         for byte in bytes {
