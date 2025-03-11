@@ -1,11 +1,11 @@
 fn main() {
-    let mut mode = String::new();
-    println!("Choose your mode");
-    std::io::stdin()
-        .read_line(&mut mode)
-        .expect("Problem with your mode.");
+    let args: Vec<String> = std::env::args().collect();
+    if args.len() < 2 {
+        panic!("not enough arguments!");
+    }
+    let mode = &args[1];
 
-    if mode.trim() == "text" {
+    if mode.trim() == "cipher" {
         let mut message = String::new();
         println!("Message to encrypt: ");
         std::io::stdin()
@@ -31,7 +31,7 @@ fn main() {
         }
 
         println!("{laugh}");
-    } else {
+    } else if mode == "decipher" {
         let mut laugh = String::new();
         println!("Message to decrypt: ");
         std::io::stdin()
@@ -61,5 +61,7 @@ fn main() {
         }
 
         println!("{decrypted_message}");
+    } else {
+        panic!("wrong mode! use cipher or decipher");
     }
 }
