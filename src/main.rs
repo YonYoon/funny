@@ -38,14 +38,34 @@ fn main() {
 
         println!("{laugh}");
     } else {
-        let mut message = String::new();
+        let mut laugh = String::new();
         println!("Message to decrypt: ");
         std::io::stdin()
-            .read_line(&mut message)
+            .read_line(&mut laugh)
             .expect("Problem with your message.");
 
-        let number = u32::from_str_radix(&message.trim(), 2).unwrap();
-        let char = char::from_u32(number).unwrap();
-        println!("{char}");
+        let mut message = String::new();
+        for letter in laugh.trim().chars() {
+            if letter == 'а' || letter == 'a' {
+                message.push_str("0");
+            } else if letter == 'х' || letter == 'x' {
+                message.push_str("1");
+            } else {
+                println!("Current letter: {letter}");
+                panic!("Something went wrong");
+            }
+        }
+
+        let mut trimmed_msg = message.trim().to_string();
+        let letter_count = trimmed_msg.chars().count() / 8;
+        let mut decrypted_message = String::new();
+        for _ in 0..letter_count {
+            let (letter, remaining) = trimmed_msg.split_at(8);
+            let number = u32::from_str_radix(&letter, 2).unwrap();
+            decrypted_message.push(char::from_u32(number).unwrap());
+            trimmed_msg = remaining.to_string();
+        }
+
+        println!("{decrypted_message}");
     }
 }
