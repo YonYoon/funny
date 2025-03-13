@@ -44,7 +44,6 @@ fn main() {
             } else if letter == 'х' || letter == 'x' {
                 message.push_str("1");
             } else {
-                println!("Current letter: {letter}");
                 panic!("Something went wrong");
             }
         }
