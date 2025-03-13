@@ -16,7 +16,6 @@ fn main() {
         let mut binary = String::new();
         for byte in bytes {
             binary.push_str(format!("{:08b}", byte).as_str());
-            println!("Letter: {:08b}", byte);
         }
 
         let mut laugh = String::new();
